@@ -9,8 +9,8 @@ RUN set -x; \
             curl \
             node-less \
             node-clean-css \
-            python-pyinotify \
             python-unidecode \
+            python-pyinotify \
             python-renderpm \
             python-support \
         && curl -o wkhtmltox.deb -SL http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb \
@@ -21,11 +21,11 @@ RUN set -x; \
         && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
 # Install Odoo
-ENV ODOO_VERSION 8.0
+ENV ODOO_VERSION 9.0
 ENV ODOO_RELEASE 20160609
 RUN set -x; \
-        curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
-        && echo 'd112d8f2c2f89fe9996d4142a22d58fc8fe79d63 odoo.deb' | sha1sum -c - \
+        curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}c.${ODOO_RELEASE}_all.deb \
+        && echo '56e7e5dc2525fd8c1522c05deb0f7f349a966260 odoo.deb' | sha1sum -c - \
         && dpkg --force-depends -i odoo.deb \
         && apt-get update \
         && apt-get -y install -f --no-install-recommends \
